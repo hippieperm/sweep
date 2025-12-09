@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:provider/provider.dart';
 import '../../providers/feed_provider.dart';
-import '../../providers/premium_provider.dart';
 import '../../core/ad_manager.dart';
 import '../widgets/report_sheet.dart';
 import '../widgets/like_heart_overlay.dart';
@@ -22,16 +21,17 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void dispose() {
     _pageController.dispose();
+
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     final feed = context.watch<FeedProvider>();
-    final premium = context.watch<PremiumProvider>();
 
     if (feed.items.isEmpty) {
-      return const Center(child: CircularProgressIndicator(color: Colors.white));
+      return const Center(
+          child: CircularProgressIndicator(color: Colors.white));
     }
 
     return GestureDetector(
@@ -43,8 +43,8 @@ class _HomeScreenState extends State<HomeScreen> {
           final itemIndex = index % feed.items.length;
           final item = feed.items[itemIndex];
 
-          // 6번째마다 광고 노출 (프리미엄 제외)
-          if (!premium.isPremium && index != 0 && index % 6 == 0) {
+          // 6번째마다 광고 노출
+          if (index != 0 && index % 6 == 0) {
             AdManager.instance.showInterstitial();
           }
 
@@ -76,7 +76,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     Row(
                       children: [
-                        const Icon(Icons.favorite, color: Colors.pink, size: 18),
+                        const Icon(Icons.favorite,
+                            color: Colors.pink, size: 18),
                         const SizedBox(width: 4),
                         Text('${item.likes}',
                             style: const TextStyle(color: Colors.white)),

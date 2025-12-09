@@ -22,6 +22,25 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
+	<!-- AdMob 설정: 테스트용 App ID. 실 서비스 시 Env.admobAppId와 맞춰 수정 -->
+	<key>GADApplicationIdentifier</key>
+	<string>ca-app-pub-3940256099942544~3347511713</string>
+	<!-- SKAdNetwork: 심사 대비 기본 추천 리스트(필요시 추가) -->
+	<key>SKAdNetworkItems</key>
+	<array>
+		<dict>
+			<key>SKAdNetworkIdentifier</key>
+			<string>cstr6suwn9.skadnetwork</string>
+		</dict>
+		<dict>
+			<key>SKAdNetworkIdentifier</key>
+			<string>4fzdc2evr5.skadnetwork</string>
+		</dict>
+		<dict>
+			<key>SKAdNetworkIdentifier</key>
+			<string>2fnua5tdw4.skadnetwork</string>
+		</dict>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
